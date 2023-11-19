@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SectionBar() {
   const sections = [
-    { url: "", title: "Все", icon: combo },
+    { url: "/", title: "Все", icon: combo, end: true },
     { url: "/burgers", title: "Бургеры", icon: burgers },
     { url: "/snacks", title: "Закуски", icon: snacks },
     { url: "/hotdogs", title: "Хот-доги", icon: hotdogs },
@@ -27,6 +27,7 @@ export default function SectionBar() {
               isActive ? "section_bar_el sbe_active" : "section_bar_el "
             }
             to={el.url}
+            end={el.end ?? false}
             preventScrollReset={true}
           >
             <div className="section_bar_el_icon">
