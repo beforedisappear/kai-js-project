@@ -1,0 +1,184 @@
+/* main page structure */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  background-color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+
+  @media (max-width: 1024px) {
+    min-height: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  height: auto;
+}
+
+.content-row {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+}
+
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 18px;
+  top: 18px;
+}
+
+/* animations for popup */
+
+.popup-enter {
+  opacity: 0;
+}
+
+.popup-enter-active {
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms linear;
+}
+
+.popup-enter-done {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-exit {
+  opacity: 1;
+}
+
+.popup-exit-active {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms linear;
+}
+
+/* react toastify / override css variables */
+
+:root {
+  --toastify-font-family: var(--font-mont), sans-serif !important;
+  --toastify-color-info: #f0f0f4 !important;
+  --toastify-text-color-info: #606268 !important;
+}
+
+.Toastify__toast-container {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 300px !important;
+    left: calc(50% - 150px) !important;
+  }
+}
+
+.Toastify__toast {
+  border-radius: 15px !important;
+}
+
+.Toastify__toast--info svg {
+  fill: #606268 !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* universal button template */
+@mixin project_button_template() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.6rem;
+  font-family: "Nuhito", sans-serif;
+  font-weight: bolder;
+  height: 40px;
+  width: 110px;
+  border: none;
+  background-color: #ff7020;
+  border-radius: 0.6rem;
+  transition: 0.3s;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  &:hover {
+    border: none;
+    background-color: #ffab08;
+    box-shadow: 0px 0px 1px 1px rgba(255, 171, 8, 0.6);
+  }
+
+  &:active {
+    border: none;
+    box-shadow: none;
+    background-color: #f86310;
+  }
+
+  &:disabled {
+    background-color: #f9f9f9;
+    border: none;
+    box-shadow: none;
+    color: #acacac;
+  }
+}
+
+.project_button {
+  @include project_button_template();
+
+  &.round {
+    border-radius: 100%;
+    width: 40px;
+  }
+
+  &.auth {
+    width: 100px;
+
+    > span {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+
+  div,
+  div div {
+    width: 24px;
+    height: 24px;
+  }
+}

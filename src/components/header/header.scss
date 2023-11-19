@@ -1,0 +1,24 @@
+header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 60px;
+  margin: 5px 10px 5px;
+}
+
+.header {
+  &_logo {
+    height: 45px;
+    width: 175px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+header > .project_button.round {
+  margin-left: auto;
+  margin-right: 15px;
+}
