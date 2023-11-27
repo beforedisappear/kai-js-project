@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "concurrently \"vite\" \"npx json-server --host 192.168.0.177 db.json --port 3001 --delay 1100\"",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "concurrently": "^8.2.2",
     "json-server": "^0.17.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

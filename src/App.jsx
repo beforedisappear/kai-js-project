@@ -7,7 +7,6 @@ import {
 import MainPage from "./pages/MainPage";
 import RootLayout from "./pages/RootLayout";
 import Page404 from "./pages/Page404";
-import CardsList from "./components/cardsList/CardsList";
 
 const Routes = () => {
   const publicRoutes = [
