@@ -26,6 +26,7 @@
     overflow: hidden;
     position: relative;
     border-radius: 12px;
+    cursor: pointer;
 
     img {
       position: absolute;
@@ -34,6 +35,7 @@
       width: 100%;
       height: 100%;
       transition: 0.5s ease-in-out all;
+      background-color: #f2f2f2;
 
       &:hover {
         transform: scale(1.1);
@@ -49,6 +51,7 @@
   padding-bottom: 10px;
   min-height: 70px;
   height: 100%;
+  cursor: pointer;
 
   &_title {
     display: -webkit-box;

@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import cardsApi from "../api/cardsApi";
+
+import popup from "../api/popupSlice";
 import cards from "../components/cardsList/cardsSlice";
 
 // redux store creation | метод, упрощающий процесс создания и настройки хранилища
@@ -8,6 +10,7 @@ export const store = configureStore({
   //reducers list
   reducer: {
     cards,
+    popup,
 
     [cardsApi.reducerPath]: cardsApi.reducer,
   },

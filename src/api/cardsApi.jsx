@@ -65,10 +65,18 @@ const cardsApi = createApi({
         // currentState.size = incomingState;
       },
     }),
+
+    addToCart: builder.mutation({
+      query: (id) => ({
+        url: `/cards/${id}`,
+        method: "PUT",
+        body: { isCard: true },
+      }),
+    }),
   }),
 });
 
-export const { useGetCardsQuery } = cardsApi;
+export const { useGetCardsQuery, useAddToCartMutation } = cardsApi;
 
 const cardsSelectors = cardsAdapter.getSelectors((state) => state);
 
