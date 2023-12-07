@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   authPopupDisplay: false,
   cardPopupDisplay: false,
+  orderPopupDisplay: false,
 
   dataForCardPopup: null,
 };
@@ -21,6 +22,10 @@ const popupSlice = createSlice({
       state.cardPopupDisplay = action.payload;
     },
 
+    showOrderPopup: (state, action) => {
+      state.orderPopupDisplay = action.payload;
+    },
+
     setDataForCardPopup: (state, action) => {
       state.dataForCardPopup = action.payload;
     },
@@ -31,4 +36,9 @@ const { actions, reducer } = popupSlice;
 
 export default reducer;
 
-export const { showAuthPopup, showCardPopup, setDataForCardPopup } = actions;
+export const {
+  showAuthPopup,
+  showCardPopup,
+  showOrderPopup,
+  setDataForCardPopup,
+} = actions;

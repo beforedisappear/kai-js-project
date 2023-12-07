@@ -38,7 +38,7 @@ export function toastSuccess(promise, mess) {
 
 export function toastError(promise, error) {
   const err = error?.data?.exceptionName || "Непредвиденная ошибка";
-  console.error(err);
+  console.error(error);
 
   toast.update(promise, {
     render: err,

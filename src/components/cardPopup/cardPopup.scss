@@ -1,6 +1,6 @@
 [data-card] {
   width: 600px !important;
-  height: 400px !important;
+  height: auto !important;
 }
 
 .card_popup {
@@ -61,6 +61,24 @@
         font-size: 12px;
         font-weight: 600;
       }
+
+      &_params {
+        display: flex;
+        color: #b1b1b1;
+        margin-top: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 15px;
+
+    > #card_button {
+      width: 50%;
     }
   }
 }
@@ -72,5 +90,47 @@
 
   > li {
     margin-top: 3px;
+  }
+}
+
+.weight_param {
+  margin-right: auto;
+}
+
+.kcal_param {
+  margin-left: auto;
+}
+
+@media (max-width: 599px) {
+  .card_popup {
+    &_title {
+      font-size: 18px;
+    }
+
+    &_info {
+      flex-direction: column;
+
+      &_photo {
+        width: 100%;
+        max-width: 100%;
+        padding-top: 79%;
+      }
+
+      &_text {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 10px;
+
+        &_params {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &_buttons {
+      > #card_button {
+        width: 100%;
+      }
+    }
   }
 }

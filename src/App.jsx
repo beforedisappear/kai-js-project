@@ -1,10 +1,12 @@
 import {
   createBrowserRouter,
+  redirect,
   redirectDocument,
   RouterProvider,
 } from "react-router-dom";
 
 import MainPage from "./pages/MainPage";
+import CartPage from "./pages/CartPage";
 import RootLayout from "./pages/RootLayout";
 import Page404 from "./pages/Page404";
 
@@ -18,10 +20,10 @@ const Routes = () => {
 
   const publicRoutes = [
     {
-      path: "/:section?",
+      path: ":section?",
       element: <MainPage />,
     },
-    { path: "/cart", element: <h1>корзина</h1> },
+    { path: "/cart", element: <CartPage /> },
   ];
 
   const router = createBrowserRouter([

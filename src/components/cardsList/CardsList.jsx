@@ -2,7 +2,6 @@ import "../cardsList/cardsList.scss";
 import "../../styles/auxilaryStyles.scss";
 
 import Preloader from "../preloader/Preloader";
-import CardPopup from "../cardPopup/CardPopup";
 
 import { toast } from "react-toastify";
 import { useEffect, useCallback } from "react";
@@ -33,11 +32,18 @@ export default function CardsList() {
 
   const [addToCart, { isLoading: isCardAdding }] = useAddToCartMutation();
 
-  const onAddCardToCard = async (id) => {
+  const onAddCardToCard = async (data) => {
     const isAdding = toast.loading("Отправка данных...");
-    addToCart(id)
+    addToCart(data)
       .unwrap()
-      .then(() => toastSuccess(isAdding, "Успешно добавлено в корзину"))
+      .then(() =>
+        toastSuccess(
+          isAdding,
+          data?.inCart
+            ? "Успешно добавлено в корзину"
+            : "Успешно удалено из корзины"
+        )
+      )
       .catch((err) => toastError(isAdding, err));
   };
 
@@ -61,10 +67,13 @@ export default function CardsList() {
     isError,
   } = useGetCardsQuery({ page, section });
 
-  const onShowCardPopup = useCallback((data) => {
-    dispatch(setDataForCardPopup(data));
-    onShowPopup(null, true, showCardPopup);
-  }, []);
+  const onShowCardPopup = useCallback(
+    (data) => {
+      dispatch(setDataForCardPopup({ data, section: section || "all" }));
+      onShowPopup(null, true, showCardPopup);
+    },
+    [section]
+  );
 
   if (isLoading || (isFetching && originalArgs?.page === 1))
     return (
@@ -94,8 +103,10 @@ export default function CardsList() {
               <Card
                 {...item}
                 key={id}
+                section={section || "all"}
                 onShowCardPopup={onShowCardPopup}
                 onAddCardToCard={onAddCardToCard}
+                isCardAdding={isCardAdding}
               />
             );
           })
@@ -126,8 +137,6 @@ export default function CardsList() {
           )}
         </>
       ) : null}
-
-      <CardPopup />
     </>
   );
 }

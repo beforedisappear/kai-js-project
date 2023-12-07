@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_about_site"></div>
+      {/* <div className="footer_about_site"></div> */}
     </footer>
   );
 }

@@ -13,11 +13,6 @@ const cardsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.0.177:3001" }),
 
   endpoints: (builder) => ({
-    //  getCard: builder.query({
-    //    keepUnusedDataFor: 0,
-    //    query: (id) => ({ url: `/api/v2/supplier/facilities/${id}` }),
-    //  }),
-
     getCards: builder.query({
       keepUnusedDataFor: 0, // Keep unused for longer
 
@@ -67,11 +62,33 @@ const cardsApi = createApi({
     }),
 
     addToCart: builder.mutation({
-      query: (id) => ({
+      query: ({ id, inCart }) => ({
         url: `/cards/${id}`,
-        method: "PUT",
-        body: { isCard: true },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PATCH",
+        body: { inCart },
       }),
+
+      //optimistic  update
+      async onQueryStarted(
+        { id, section, inCart },
+        { dispatch, queryFulfilled }
+      ) {
+        const patchResult = dispatch(
+          cardsApi.util.updateQueryData("getCards", { section }, (draft) => {
+            cardsAdapter.updateOne(draft.data, { id, changes: { inCart } });
+          })
+        );
+
+        try {
+          await queryFulfilled;
+        } catch (err) {
+          patchResult.undo();
+          console.error(err);
+        }
+      },
     }),
   }),
 });

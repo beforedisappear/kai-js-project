@@ -1,7 +1,9 @@
 import "../card/card.scss";
 
 export default function Card(props) {
-  const { onShowCardPopup, onAddCardToCard, ...data } = props;
+  const { onShowCardPopup, onAddCardToCard, section, isCardAdding, ...data } =
+    props;
+
   return (
     <div className="cards_list_card">
       <div
@@ -17,10 +19,17 @@ export default function Card(props) {
 
       <button
         id="card_button"
-        className="button-form-light"
-        onClick={() => onAddCardToCard(data.id)}
+        disabled={isCardAdding}
+        className={data.inCart ? "incart" : ""}
+        onClick={() =>
+          onAddCardToCard({
+            id: data.id,
+            inCart: !data.inCart,
+            section: section,
+          })
+        }
       >
-        ДОБАВИТЬ
+        {data.inCart ? "ДОБАВЛЕНО" : "ДОБАВИТЬ"}
       </button>
     </div>
   );
