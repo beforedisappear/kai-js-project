@@ -25,6 +25,10 @@
     color: #fff;
     background-color: #ff7020;
   }
+
+  &:disabled {
+    color: #acacac;
+  }
 }
 
 .card {

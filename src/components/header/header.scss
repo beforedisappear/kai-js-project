@@ -18,15 +18,26 @@ header {
   }
 }
 
-header > .project_button.round {
-  margin-left: auto;
-  margin-right: 15px;
+header {
+  > .project_button.round {
+    margin-right: 15px;
+  }
+
+  > .right {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 479px) {
   .header {
     &_logo {
       width: 130px;
+    }
+  }
+
+  header {
+    > .project_button.round {
+      margin-right: 10px;
     }
   }
 }

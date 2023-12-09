@@ -47,3 +47,14 @@ export function toastError(promise, error) {
     autoClose: 3000,
   });
 }
+
+//error div creator for register form
+export const errorDiv = (prop, shift) => {
+  if (prop)
+    return (
+      <div className="form-error" style={{ top: shift }}>
+        {prop?.message}
+      </div>
+    );
+  else return null;
+};

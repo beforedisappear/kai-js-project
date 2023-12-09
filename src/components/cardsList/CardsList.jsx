@@ -5,9 +5,8 @@ import Preloader from "../preloader/Preloader";
 
 import { toast } from "react-toastify";
 import { useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import MetaData from "../metaData/MetaData";
 import Card from "../card/Card";
 
@@ -27,6 +26,9 @@ const sectionTitles = {
 export default function CardsList() {
   const dispatch = useDispatch();
   const { section } = useParams();
+
+  if (section && !["burgers", "hotdogs", "snacks", "donuts"].includes(section))
+    return <Navigate to="/page-not-found" />;
 
   const page = useSelector((state) => state.cards.counts[section || "all"]);
 

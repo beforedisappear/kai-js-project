@@ -33,7 +33,7 @@
         "Листья салата",
         "Соус мясной"
       ],
-      "inCart": false
+      "inCart": true
     },
     {
       "id": 3,
@@ -51,7 +51,7 @@
         "Листья салата",
         "Соус сырный"
       ],
-      "inCart": true
+      "inCart": false
     },
     {
       "id": 4,
@@ -70,7 +70,7 @@
         "Листья салата",
         "Кетчуп"
       ],
-      "inCart": true
+      "inCart": false
     },
     {
       "id": 5,
@@ -317,5 +317,33 @@
       "inCart": false
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "phone": "+79378778443",
+      "name": "beforedisappear",
+      "code": "2333",
+      "token": "smd32o3rldq32op4klqk"
+    }
+  ],
+  "orders": [
+    {
+      "id": "Q2JiS1G0VZwiUFm7RnD7z",
+      "deliveryType": "DELIVERY",
+      "name": "Roman",
+      "phone": "+79378778444",
+      "address": "Латышских стрелков 39",
+      "floor": "22",
+      "comment": "123213132"
+    },
+    {
+      "id": "pAfovuGmF5E4xijImnrlf",
+      "deliveryType": "DELIVERY",
+      "name": "beforedisappear",
+      "phone": "+79378778444",
+      "address": "Латышских стрелков 39",
+      "floor": "22",
+      "comment": "234234"
+    }
+  ]
 }

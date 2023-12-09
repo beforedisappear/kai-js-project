@@ -187,7 +187,7 @@ ul {
   }
 
   &:disabled {
-    background-color: #f9f9f9;
+    background-color: #d1cece;
     border: none;
     box-shadow: none;
     color: #acacac;
@@ -196,6 +196,7 @@ ul {
 
 .project_button {
   @include project_button_template();
+  cursor: pointer;
 
   &.round {
     border-radius: 100%;
@@ -216,4 +217,97 @@ ul {
     width: 24px;
     height: 24px;
   }
+}
+
+@mixin input-form-template() {
+  font-family: "Nuhito", sans-serif;
+  font-size: small;
+  font-weight: 500;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border: 1.5px solid #f2f2f3;
+
+  &::placeholder {
+    color: rgba(96, 98, 104, 0.5);
+  }
+
+  &:focus-visible {
+    outline: 0;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+  }
+
+  &:focus {
+    color: #606268;
+    outline: 0;
+    background-color: #ffffff;
+    border-color: #ffab08;
+  }
+
+  &:disabled {
+    color: #95979c;
+    background-color: #f5f5f7;
+  }
+}
+
+.project_input_field {
+  @include input-form-template;
+  width: 100%;
+  height: 36px;
+}
+
+.radio-form {
+  height: 0px !important;
+  width: 0px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+
+  + label {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    padding-left: 23px;
+    position: relative;
+
+    &:before {
+      border: 1px solid #000000;
+      border-radius: 50%;
+      box-sizing: border-box;
+      content: "";
+      display: block;
+      height: 16px;
+      top: calc(50% - 8px);
+      left: 0;
+      position: absolute;
+      transition: all 0.2s;
+      width: 16px;
+    }
+  }
+
+  &:checked + label:before {
+    border: 4px solid #000000;
+  }
+}
+
+.invalid,
+.invalid:focus {
+  border-color: #ff0000;
+}
+
+.form-error {
+  position: absolute;
+  font-size: 12px;
+  color: #ff0000;
+  font-weight: 500;
+
+  background: #ff0000;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

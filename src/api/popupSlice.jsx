@@ -7,6 +7,8 @@ const initialState = {
   orderPopupDisplay: false,
 
   dataForCardPopup: null,
+  newFormStep: false, //form step (input number/input code)
+  phoneNumber: "", //state with user phone number
 };
 
 const popupSlice = createSlice({
@@ -29,6 +31,18 @@ const popupSlice = createSlice({
     setDataForCardPopup: (state, action) => {
       state.dataForCardPopup = action.payload;
     },
+
+    nextFormStep: (state) => {
+      state.newFormStep = true;
+    },
+
+    prevFormStep: (state) => {
+      state.newFormStep = false;
+    },
+
+    setPhoneNumber: (state, action) => {
+      state.phoneNumber = action.payload;
+    },
   },
 });
 
@@ -41,4 +55,7 @@ export const {
   showCardPopup,
   showOrderPopup,
   setDataForCardPopup,
+  nextFormStep,
+  prevFormStep,
+  setPhoneNumber,
 } = actions;

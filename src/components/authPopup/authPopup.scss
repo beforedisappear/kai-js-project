@@ -1,0 +1,112 @@
+/* instruction block of popup-container */
+
+[data-auth] {
+  height: 350px;
+  width: 350px;
+}
+
+.instruction-text {
+  color: #282828;
+  position: relative;
+  height: 30%;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.back-button {
+  position: absolute;
+  cursor: pointer;
+  width: 23px;
+  height: 23px;
+  left: 18px;
+  top: 18px;
+}
+
+.instruction-text-subtitle {
+  width: 49%;
+  margin: 10px auto;
+  white-space: pre-line;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* form block of popup-container*/
+.auth-form {
+  height: 40%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    > .project_input_field {
+      margin-top: 15px;
+      width: 60%;
+
+      /* style for class "input-form code" */
+      &.code {
+        width: 60px;
+        text-align: center;
+      }
+    }
+
+    > .project_button {
+      height: 35px;
+      font-size: 0.7rem;
+      margin-top: auto;
+    }
+
+    .form-error {
+      padding-top: 3px;
+      color: #ff0000;
+      font-size: x-small;
+      font-weight: 600;
+    }
+  }
+}
+
+.send-again {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 30%;
+  padding-bottom: 15px;
+  font-size: x-small;
+  font-weight: 600;
+}
+
+.send-again > span {
+  cursor: pointer;
+}
+
+.wait {
+  color: #8e8585;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.user_agree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 30%;
+  padding-bottom: 15px;
+  font-size: 9.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  color: #b9b9b9;
+  white-space: pre-line;
+
+  > a {
+    display: flex;
+    max-width: fit-content;
+    color: #a5d99d;
+  }
+}

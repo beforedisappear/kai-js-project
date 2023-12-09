@@ -7,14 +7,18 @@ import {
 
 import MainPage from "./pages/MainPage";
 import CartPage from "./pages/CartPage";
+import ProfilePage from "./pages/ProfilePage";
 import RootLayout from "./pages/RootLayout";
 import Page404 from "./pages/Page404";
 
+import { useSelector } from "react-redux";
+
 const Routes = () => {
-  const privatedRouutes = [
+  const token = useSelector((state) => state.auth.accessToken);
+  const privatedRoutes = [
     {
       path: "/profile",
-      element: <h1>профиль</h1>,
+      element: <ProfilePage />,
     },
   ];
 
@@ -24,6 +28,10 @@ const Routes = () => {
       element: <MainPage />,
     },
     { path: "/cart", element: <CartPage /> },
+    {
+      path: "/page-not-found",
+      element: <Page404 />,
+    },
   ];
 
   const router = createBrowserRouter([
@@ -31,8 +39,8 @@ const Routes = () => {
       path: "/",
       element: <RootLayout />,
       children: [
-        ...(true ? publicRoutes : []),
-        ...(false ? privatedRouutes : []),
+        ...publicRoutes,
+        ...(token ? privatedRoutes : []),
         {
           path: "/*",
           element: <Page404 />,

@@ -55,6 +55,7 @@ export default function CardSection({ data, totalCost }) {
           <span className="total">{totalCost}₽</span>
         </div>
         <button
+          disabled={totalCost === 0}
           className="project_button"
           onClick={() => onShowPopup(null, true, showOrderPopup)}
         >

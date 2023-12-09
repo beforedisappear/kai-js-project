@@ -1,12 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { createEntityAdapter } from "@reduxjs/toolkit";
-
-// // Create Adapter For Posts To Avoid Duplicates
-// const cardsAdapter = createEntityAdapter({
-//   selectId: (card) => card.id,
-// });
-
-// const cardsSelector = cardsAdapter.getSelectors();
 
 const cartApi = createApi({
   reducerPath: "cartApi",
@@ -29,37 +21,6 @@ const cartApi = createApi({
           }, 0),
         };
       },
-
-      // forceRefetch: ({ currentArg, previousArg }) => {
-      //   return (
-      //     currentArg?.page !== previousArg?.page ||
-      //     currentArg?.section != previousArg?.section
-      //   );
-      // },
-
-      // serializeQueryArgs: ({ endpointName, queryArgs }) => {
-      //   return `${endpointName}-${queryArgs?.section || "all"}`;
-      // },
-
-      // merge: (currentState, incomingState, arg) => {
-      //   //if we don't use search and request the first n feedback items,
-      //   //then we use setMany to reset our cache with data
-      //   if (arg.arg?.page > 0) {
-      //     cardsAdapter.setMany(
-      //       currentState.data,
-      //       cardsSelector.selectAll(incomingState.data)
-      //     );
-      //   }
-      //   //else we use pagination by page increasing,
-      //   //so we merge our cache with data (new feedback items selection)
-      //   else {
-      //     cardsAdapter.setAll(
-      //       currentState.data,
-      //       cardsSelector.selectAll(incomingState.data)
-      //     );
-      //   }
-      //   // currentState.size = incomingState;
-      // },
     }),
 
     removeCardFromCart: builder.mutation({
@@ -74,10 +35,24 @@ const cartApi = createApi({
 
       invalidatesTags: ["card"],
     }),
+
+    createOrder: builder.mutation({
+      query: (data) => ({
+        url: `/orders`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetCardsFromCartQuery, useRemoveCardFromCartMutation } =
-  cartApi;
+export const {
+  useGetCardsFromCartQuery,
+  useRemoveCardFromCartMutation,
+  useCreateOrderMutation,
+} = cartApi;
 
 export default cartApi;

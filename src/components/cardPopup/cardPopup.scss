@@ -33,6 +33,8 @@
       border-radius: 16px;
 
       > img {
+        max-height: 202px;
+        border-radius: 16px;
         position: absolute;
         top: 0%;
         left: 0%;
@@ -78,7 +80,7 @@
     margin-top: 15px;
 
     > #card_button {
-      width: 50%;
+      width: 256px;
     }
   }
 }
@@ -114,6 +116,10 @@
         width: 100%;
         max-width: 100%;
         padding-top: 79%;
+
+        > img {
+          max-height: 100%;
+        }
       }
 
       &_text {
