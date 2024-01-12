@@ -33,9 +33,6 @@ export default function CardPopup() {
       })
       .catch((err) => toastError(isAdding, err));
   };
-
-  console.log(cardPopupData);
-
   return (
     <CSSTransition
       in={cardPopupDisplay}

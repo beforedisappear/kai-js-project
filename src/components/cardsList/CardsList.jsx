@@ -36,7 +36,8 @@ export default function CardsList() {
 
   const onAddCardToCard = async (data) => {
     const isAdding = toast.loading("Отправка данных...");
-    addToCart(data)
+
+    await addToCart(data)
       .unwrap()
       .then(() =>
         toastSuccess(
